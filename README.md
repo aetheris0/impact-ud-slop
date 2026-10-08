@@ -7,10 +7,9 @@
 # [![Impact V8](https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3500&pause=2000&color=FF0000&width=435&lines=Impact+Client+V9+is+discontinued;Use+Vape+Rewrite;codeberg.org/Miniblox/VapeRewrite;It+works+on+latest+Miniblox+and+with+more+games+supported+soon;Impact+doesn't+even+work+on+Miniblox+anymore)](https://git.io/typing-svg)
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=2500&pause=1000&color=abe0e4&vCenter=true&width=600&lines=What+are+you+waiting+for;Use+Vape+Rewrite+instead.)](https://git.io/typing-svg)
 
-## A now discontinued feature-rich client modification for miniblox.io with enhanced gameplay capabilities, stealth optimization, and a modern, dark-mode user interface
+## A feature-rich client modification for miniblox.io with enhanced gameplay capabilities, stealth optimization, and a modern, dark-mode user interface
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20Us-5865F2)](https://discord.gg/qDEkUGv3AD)
-[![Website](https://img.shields.io/badge/Website-impactminiblox.js.org-blue)](https://impactminiblox.js.org)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Us-5865F2)](https://discord.gg/Zqwq2GzmC3)
 
 ---
 
