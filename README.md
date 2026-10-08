@@ -1,12 +1,8 @@
 
 > [!CAUTION]
-> Vector has patched Impact, Vape, and all other clients that use code replacement-based hooking that directly patches the game's script.
-> There might be a way to do it that might only be available via extensions (you could hook requests to miniblox's index-{...}.js and then patch it from there so imports work and etc), but I'm not going to bother.
-> If you paid attention, you'd notice that, Vape Rewrite is NOT mentioned in that list! that is because it works on latest Miniblox! See [here](https://codeberg.org/Miniblox/VapeRewrite). Vape Rewrite also has a Mace Kill and a NoFall.
+> progskid is skidder so i make and beware my farts stink
 
-# [![Impact V8](https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3500&pause=2000&color=FF0000&width=435&lines=Impact+Client+V9+is+discontinued;Use+Vape+Rewrite;codeberg.org/Miniblox/VapeRewrite;It+works+on+latest+Miniblox+and+with+more+games+supported+soon;Impact+doesn't+even+work+on+Miniblox+anymore)](https://git.io/typing-svg)
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=2500&pause=1000&color=abe0e4&vCenter=true&width=600&lines=What+are+you+waiting+for;Use+Vape+Rewrite+instead.)](https://git.io/typing-svg)
-
+# [![Typing SVG](https://readme-typing-svg.demolab.com?font=Google+Sans&pause=1000&width=435&lines=impact+ud+slopy)](https://git.io/typing-svg)
 ## A feature-rich client modification for miniblox.io with enhanced gameplay capabilities, stealth optimization, and a modern, dark-mode user interface
 
 [![Discord](https://img.shields.io/badge/Discord-Join%20Us-5865F2)](https://discord.gg/Zqwq2GzmC3)
@@ -45,10 +41,6 @@
 4. **Launch the client**
    - Navigate to [miniblox.io](https://miniblox.io)
    - The client will auto-initialize
-
-5. **Troubleshooting**
-   - **Tampermonkey users**: If the script doesn't load, go to Extensions → Manage Extensions → Tampermonkey → Toggle "Allow User Scripts" permission ([FAQ #209](https://www.tampermonkey.net/faq.php#Q209))
-   - See our [FAQ](https://github.com/ProgMEM-CC/miniblox.impact.client.updatedv2/wiki/FAQ) for additional help
 
 ---
 
