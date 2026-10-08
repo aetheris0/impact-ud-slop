@@ -3,8 +3,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100719">
+  <meta name="description" content="Impact UD Slop — a neon-themed Miniblox client project.">
+
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <title>Impact UD Slop</title>
 
@@ -14,14 +17,15 @@
 
   <style>
     :root {
-      --pink: #ff00dc;
-      --purple: #8500ff;
-      --violet: #6000ff;
-      --background: #08040d;
-      --surface: rgba(19, 10, 34, 0.82);
-      --border: rgba(202, 83, 255, 0.23);
-      --text: #ffffff;
-      --muted: #b9a9cc;
+      --pink: #ff20dc;
+      --pink-light: #ff9aef;
+      --purple: #9b35ff;
+      --purple-dark: #5c18c9;
+      --background: #09050e;
+      --surface: rgba(22, 12, 35, .82);
+      --border: rgba(205, 107, 255, .23);
+      --text: #fff;
+      --muted: #bbaacb;
     }
 
     * {
@@ -36,13 +40,13 @@
 
     body {
       min-height: 100vh;
-      padding: 30px 20px;
+      padding: 25px 20px;
       overflow-x: hidden;
       font-family: 'Google Sans', Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(ellipse at 12% 18%, rgba(255, 0, 220, 0.18), transparent 38%),
-        radial-gradient(ellipse at 88% 30%, rgba(105, 0, 255, 0.2), transparent 40%),
+        radial-gradient(ellipse at 10% 15%, rgba(255, 0, 220, .17), transparent 38%),
+        radial-gradient(ellipse at 90% 28%, rgba(111, 0, 255, .20), transparent 40%),
         var(--background);
     }
 
@@ -52,13 +56,9 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background-image: radial-gradient(
-        rgba(220, 130, 255, 0.22) 1px,
-        transparent 1px
-      );
-      background-size: 36px 36px;
-      opacity: 0.16;
-      mask-image: linear-gradient(to bottom, black, transparent 90%);
+      background-image: radial-gradient(rgba(224, 153, 255, .3) 1px, transparent 1px);
+      background-size: 35px 35px;
+      opacity: .15;
     }
 
     a {
@@ -67,7 +67,7 @@
 
     .page {
       width: 100%;
-      max-width: 1050px;
+      max-width: 1080px;
       margin: 0 auto;
     }
 
@@ -75,69 +75,67 @@
 
     .navbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 15px 20px;
-      margin-bottom: 34px;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 32px;
+      padding: 17px 21px;
       border: 1px solid var(--border);
-      border-radius: 17px;
-      background: rgba(15, 8, 27, 0.72);
+      border-radius: 16px;
+      background: rgba(17, 9, 28, .76);
       backdrop-filter: blur(18px);
-      box-shadow: 0 0 35px rgba(135, 0, 255, 0.08);
+      box-shadow: 0 0 30px rgba(133, 0, 255, .08);
     }
 
     .brand {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: -0.7px;
+      letter-spacing: -.6px;
       text-decoration: none;
     }
 
     .brand span {
-      color: #c45aff;
+      color: #d78aff;
     }
 
-    .nav-tag {
+    .nav-label {
       color: var(--muted);
-      font-size: 0.8rem;
+      font-size: .82rem;
     }
 
-    /* Hero */
+    /* Main banner */
 
     .hero {
       position: relative;
       display: grid;
-      grid-template-columns: 1fr 0.9fr;
+      grid-template-columns: 1fr .95fr;
       align-items: center;
-      gap: 28px;
-      padding: 48px 38px;
+      gap: 32px;
+      padding: 45px 38px;
       overflow: hidden;
       border: 1px solid var(--border);
       border-radius: 25px;
-      background: linear-gradient(
-        125deg,
-        rgba(255, 0, 220, 0.09),
-        rgba(37, 11, 73, 0.82) 52%,
-        rgba(100, 0, 255, 0.14)
-      );
+      background:
+        linear-gradient(125deg, rgba(255, 0, 220, .10), transparent 50%),
+        linear-gradient(245deg, rgba(112, 0, 255, .15), transparent 60%),
+        rgba(20, 10, 34, .88);
       box-shadow:
-        0 15px 65px rgba(104, 0, 255, 0.13),
-        inset 0 0 45px rgba(180, 0, 255, 0.035);
-      animation: fadeUp 0.8s ease both;
+        0 15px 65px rgba(112, 0, 255, .12),
+        inset 0 0 45px rgba(180, 0, 255, .035);
+      animation: fadeUp .8s ease both;
     }
 
     .hero::before {
       content: "";
       position: absolute;
+      top: -170px;
+      right: 10%;
       width: 280px;
       height: 280px;
-      right: 8%;
-      top: -170px;
       border-radius: 50%;
       background: var(--purple);
       filter: blur(110px);
-      opacity: 0.25;
+      opacity: .28;
       pointer-events: none;
     }
 
@@ -150,15 +148,15 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 19px;
-      padding: 7px 12px;
-      border: 1px solid rgba(255, 0, 220, 0.3);
+      margin-bottom: 20px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 32, 220, .3);
       border-radius: 999px;
-      background: rgba(255, 0, 220, 0.07);
-      color: #f3aaff;
-      font-size: 0.76rem;
+      background: rgba(255, 32, 220, .07);
+      color: var(--pink-light);
+      font-size: .75rem;
       font-weight: 600;
-      letter-spacing: 1.3px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
     }
 
@@ -166,28 +164,28 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #d45aff;
-      box-shadow: 0 0 10px #d45aff;
+      background: var(--pink);
+      box-shadow: 0 0 12px var(--pink);
     }
 
     h1 {
-      margin-bottom: 15px;
-      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      margin-bottom: 18px;
+      font-size: clamp(3rem, 6vw, 5rem);
       font-weight: 700;
-      line-height: 0.98;
+      line-height: .98;
       letter-spacing: -4px;
     }
 
     h1 span {
       display: block;
-      color: #ed91ff;
-      text-shadow: 0 0 35px rgba(222, 0, 255, 0.25);
+      color: #e7a0ff;
+      text-shadow: 0 0 32px rgba(222, 0, 255, .25);
     }
 
     .description {
-      max-width: 440px;
-      margin-bottom: 26px;
-      color: #c5b7d5;
+      max-width: 430px;
+      margin-bottom: 27px;
+      color: #c7b8d7;
       font-size: 1rem;
       line-height: 1.8;
     }
@@ -195,24 +193,23 @@
     .actions {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       gap: 12px;
     }
 
     .button {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       gap: 9px;
-      min-height: 48px;
-      padding: 0 21px;
+      min-height: 47px;
+      padding: 0 20px;
       border: 1px solid transparent;
-      border-radius: 12px;
+      border-radius: 11px;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: .94rem;
       font-weight: 600;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      transition: transform .2s, box-shadow .2s, background .2s;
     }
 
     .button:hover {
@@ -220,23 +217,23 @@
     }
 
     .button-primary {
-      color: white;
       background: linear-gradient(105deg, #f000d8, #8b28ff);
-      box-shadow: 0 5px 25px rgba(201, 0, 255, 0.24);
+      color: white;
+      box-shadow: 0 5px 25px rgba(201, 0, 255, .25);
     }
 
     .button-primary:hover {
-      box-shadow: 0 8px 35px rgba(219, 0, 255, 0.42);
+      box-shadow: 0 8px 35px rgba(219, 0, 255, .4);
     }
 
     .button-secondary {
       border-color: var(--border);
-      background: rgba(255, 255, 255, 0.035);
+      background: rgba(255, 255, 255, .035);
       color: #e5d6f5;
     }
 
     .button-secondary:hover {
-      background: rgba(183, 66, 255, 0.1);
+      background: rgba(183, 66, 255, .1);
     }
 
     /* Client preview */
@@ -246,29 +243,28 @@
       z-index: 1;
       min-width: 0;
       padding: 18px;
-      border: 1px solid rgba(207, 70, 255, 0.6);
+      border: 1px solid rgba(207, 70, 255, .58);
       border-radius: 17px;
-      background: rgba(9, 5, 22, 0.91);
+      background: rgba(9, 5, 22, .94);
       box-shadow:
-        0 0 35px rgba(172, 0, 255, 0.19),
-        inset 0 0 35px rgba(105, 0, 255, 0.06);
+        0 0 35px rgba(172, 0, 255, .2),
+        inset 0 0 35px rgba(105, 0, 255, .06);
       transform: rotate(2deg);
       animation: floatIn 1s ease both;
     }
 
     .preview-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 10px;
-      padding: 2px 0 15px;
-      border-bottom: 1px solid rgba(188, 86, 255, 0.2);
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(188, 86, 255, .2);
     }
 
     .preview-title {
       font-size: 1rem;
       font-weight: 700;
-      letter-spacing: -0.3px;
     }
 
     .window-controls {
@@ -300,13 +296,13 @@
       padding: 9px 7px;
       border-radius: 8px;
       color: #c3b1d9;
-      font-size: 0.73rem;
+      font-size: .73rem;
     }
 
     .side-item.active {
       background: linear-gradient(100deg, #a900e9, #6300b8);
       color: white;
-      box-shadow: 0 0 15px rgba(199, 0, 255, 0.17);
+      box-shadow: 0 0 15px rgba(199, 0, 255, .17);
     }
 
     .module-area {
@@ -316,30 +312,26 @@
     .module-heading {
       margin-bottom: 11px;
       color: #eadcf8;
-      font-size: 0.9rem;
+      font-size: .9rem;
       font-weight: 600;
     }
 
     .module {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 8px;
       margin-bottom: 8px;
       padding: 11px 10px;
-      border: 1px solid rgba(175, 80, 255, 0.12);
+      border: 1px solid rgba(175, 80, 255, .12);
       border-radius: 9px;
-      background: linear-gradient(
-        100deg,
-        rgba(96, 31, 139, 0.22),
-        rgba(37, 20, 65, 0.52)
-      );
+      background: linear-gradient(100deg, rgba(96, 31, 139, .22), rgba(37, 20, 65, .52));
     }
 
     .module-name {
       overflow: hidden;
       color: #f8efff;
-      font-size: 0.77rem;
+      font-size: .77rem;
       font-weight: 500;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -348,7 +340,7 @@
     .module-desc {
       margin-top: 4px;
       color: #a995c4;
-      font-size: 0.65rem;
+      font-size: .65rem;
     }
 
     .toggle {
@@ -358,7 +350,6 @@
       padding: 2px;
       border-radius: 999px;
       background: linear-gradient(100deg, #ff00d9, #8b2dff);
-      box-shadow: 0 0 12px rgba(204, 0, 255, 0.2);
     }
 
     .toggle::after {
@@ -374,21 +365,21 @@
     /* Features */
 
     .section {
-      margin-top: 35px;
-      animation: fadeUp 0.9s ease both;
+      margin-top: 38px;
+      animation: fadeUp .9s ease both;
     }
 
     .section-heading {
-      margin-bottom: 8px;
-      font-size: 1.6rem;
+      margin-bottom: 9px;
+      font-size: 1.65rem;
       font-weight: 700;
-      letter-spacing: -0.7px;
+      letter-spacing: -.7px;
     }
 
     .section-description {
-      margin-bottom: 20px;
+      margin-bottom: 21px;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: .94rem;
       line-height: 1.7;
     }
 
@@ -402,30 +393,26 @@
       padding: 23px 20px;
       border: 1px solid var(--border);
       border-radius: 16px;
-      background: linear-gradient(
-        145deg,
-        rgba(34, 17, 53, 0.8),
-        rgba(14, 8, 24, 0.8)
-      );
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      background: linear-gradient(145deg, rgba(34, 17, 53, .8), rgba(14, 8, 24, .8));
+      transition: transform .2s, border-color .2s, box-shadow .2s;
     }
 
     .feature:hover {
       transform: translateY(-4px);
-      border-color: rgba(223, 76, 255, 0.55);
-      box-shadow: 0 10px 30px rgba(140, 0, 255, 0.1);
+      border-color: rgba(223, 76, 255, .55);
+      box-shadow: 0 10px 30px rgba(140, 0, 255, .1);
     }
 
     .feature-icon {
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       width: 39px;
       height: 39px;
       margin-bottom: 15px;
-      border: 1px solid rgba(227, 76, 255, 0.22);
+      border: 1px solid rgba(227, 76, 255, .22);
       border-radius: 11px;
-      background: rgba(197, 0, 255, 0.1);
+      background: rgba(197, 0, 255, .1);
       color: #ee86ff;
       font-size: 1.15rem;
     }
@@ -438,7 +425,7 @@
 
     .feature p {
       color: var(--muted);
-      font-size: 0.86rem;
+      font-size: .86rem;
       line-height: 1.7;
     }
 
@@ -447,9 +434,9 @@
     footer {
       margin-top: 40px;
       padding: 22px 10px 8px;
-      border-top: 1px solid rgba(195, 107, 255, 0.14);
+      border-top: 1px solid rgba(195, 107, 255, .14);
       color: #857494;
-      font-size: 0.82rem;
+      font-size: .82rem;
       line-height: 1.8;
       text-align: center;
     }
@@ -477,7 +464,7 @@
     @keyframes floatIn {
       from {
         opacity: 0;
-        transform: translateY(14px) rotate(0deg);
+        transform: translateY(14px) rotate(0);
       }
       to {
         opacity: 1;
@@ -524,10 +511,10 @@
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -537,12 +524,15 @@
   <main class="page">
 
     <nav class="navbar">
-      <a class="brand" href="#">impact <span>ud slop</span></a>
-      <span class="nav-tag">Miniblox Client</span>
+      <a class="brand" href="#">
+        impact <span>ud slop</span>
+      </a>
+      <span class="nav-label">Miniblox Client</span>
     </nav>
 
     <section class="hero">
       <div class="hero-content">
+
         <div class="eyebrow">
           <span class="status-dot"></span>
           Impact Client
@@ -555,13 +545,13 @@
 
         <p class="description">
           A client with its own style. Explore the Impact project,
-          discover its interface, and check out the project repository.
+          check out the interface, and visit the project repository.
         </p>
 
         <div class="actions">
           <a
             class="button button-primary"
-            href="https://codeberg.org/Miniblox/VapeRewrite/"
+            href="https://github.com/aetheris0/impact-ud-slop"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -575,8 +565,10 @@
       </div>
 
       <div class="preview" aria-label="Illustration of a neon client interface">
+
         <div class="preview-header">
           <div class="preview-title">impact ud slop</div>
+
           <div class="window-controls" aria-hidden="true">
             <span></span>
             <span></span>
@@ -585,6 +577,7 @@
         </div>
 
         <div class="preview-body">
+
           <div class="sidebar">
             <div class="side-item active">⌂ &nbsp; Home</div>
             <div class="side-item">⚔ &nbsp; Combat</div>
@@ -629,23 +622,25 @@
               <div class="toggle" aria-hidden="true"></div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
     <section class="section" id="features">
       <h2 class="section-heading">Inside Impact</h2>
+
       <p class="section-description">
         A clean interface with a neon look and a simple, organized layout.
       </p>
 
       <div class="features">
+
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">✦</div>
           <h3>Neon Design</h3>
           <p>
-            A pink-to-purple color palette, glowing accents,
-            and dark glass panels.
+            Pink-to-purple gradients, glowing accents, and dark glass panels.
           </p>
         </article>
 
@@ -653,33 +648,32 @@
           <div class="feature-icon" aria-hidden="true">▦</div>
           <h3>Client Interface</h3>
           <p>
-            A module-inspired layout with clear categories
-            and compact controls.
+            A module-inspired layout with clear categories and compact controls.
           </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">◈</div>
-          <h3>Lightweight Layout</h3>
+          <h3>Responsive Layout</h3>
           <p>
-            A responsive page that adapts to desktop screens
-            and mobile devices.
+            A responsive design that adapts to desktop and mobile screens.
           </p>
         </article>
+
       </div>
     </section>
 
     <footer>
-      <p>
-        Impact UD Slop · Community project
-      </p>
+      <p>Impact UD Slop · Community project</p>
       <p>
         Not affiliated with Miniblox or Mojang.
         <a
-          href="https://codeberg.org/Miniblox/VapeRewrite/"
+          href="https://github.com/aetheris0/impact-ud-slop"
           target="_blank"
           rel="noopener noreferrer"
-        >Project repository ↗</a>
+        >
+          GitHub Repository ↗
+        </a>
       </p>
     </footer>
 
