@@ -1,6 +1,6 @@
-
-> [!CAUTION]
-> progskid is skidder so i make and beware my farts stink
+<p align="center">
+  <img src="banner.png" alt="Impact UD Slop Banner" width="100%">
+</p>
 
 # [![Typing SVG](https://readme-typing-svg.demolab.com?font=Google+Sans&pause=1000&width=435&lines=impact+ud+slopy)](https://git.io/typing-svg)
 ## A feature-rich client modification for miniblox.io with enhanced gameplay capabilities, stealth optimization, and a modern, dark-mode user interface
