@@ -1,38 +1,25 @@
 // ==UserScript==
-// @name         Impact For Miniblox
-// @namespace    https://github.com/progmem-cc
-// @version      9-FINAL2
+// @name         impact ud level ppenar
+// @namespace    https://github.com/aetheris0
+// @version      6.7
 // @description  The ultimate Miniblox hacked client which is built for total domination of Miniblox servers with a fully dark-mode optimized GUI.
-// @author       ProgMEM-CC, 6x68 (bab), dtkiller-jp
+// @author       ninja, ProgSKID, 6x68 (opsec aka vape rewrite owner yuaha), dtkiller-jp
 // @match        https://miniblox.io/*
 // @match        https://miniblox.org/*
 // @match        https://miniblox.online/*
 // @match        https://bloxbattles.io/*
-// @icon         https://raw.githubusercontent.com/progmem-cc/miniblox.impact.client.updatedv2/refs/heads/main/favicon.png
+// @icon         https://raw.githubusercontent.com/aetheris0/impact-ud-slop/refs/heads/main/favicon.png
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        unsafeWindow
-// @require      https://raw.githubusercontent.com/progmem-cc/miniblox.impact.client.updatedv2/refs/heads/main/vav4inject.js
-// @require      https://raw.githubusercontent.com/progmem-cc/miniblox.impact.client.updatedv2/refs/heads/main/unlocker.js
+// @require      https://raw.githubusercontent.com/aetheris0/impact-ud-slop/refs/heads/main/vav4inject.js
+// @require      https://raw.githubusercontent.com/aetheris0/impact-ud-slop//refs/heads/main/unlocker.js
 // @run-at       document-start
-// @updateURL    https://raw.githubusercontent.com/progmem-cc/miniblox.impact.client.updatedv2/main/tampermonkey.user.js
-// @downloadURL  https://raw.githubusercontent.com/progmem-cc/miniblox.impact.client.updatedv2/main/tampermonkey.user.js
+// @updateURL    https://raw.githubusercontent.com/aetheris0/impact-ud-slop//main/tampermonkey.user.js
+// @downloadURL  https://raw.githubusercontent.com/aetheris0/impact-ud-slop//main/tampermonkey.user.js
 // @license      AGPL-3.0-only
 // ==/UserScript==
 
 /**
- * Hey! All of Impact's focus right now is being devoted to working on something else: a new base, let me explain why we want this.
- * While the new base is *definitely* not ready for production use yet, we'd recommend looking at its progress every few weeks or so,
- * One day, Vape Rewrite will be complete enough for me to move over to GitHub so people actually see it.
- * This base is *20x* easier to make things in, because it isn't put all into one clustered file.
- * Check how long the vav4inject.js file is, it's not even Impact's fault. Impact forked a fork of a fork of Vape,
- * and original Vape itself is *REALLY LONG*, with barely any modules compared to even the most basic Minecraft client!
- * This is why we created the new "base"
- * (it's not meant to be a base, but people really will turn it into by uselessly forking it) client, Vape Rewrite.
- * We put issues and the code itself in this one repository on Codeberg (GitHub but not telling me to embrace AI or leave):
- * <https://codeberg.org/Miniblox/VapeRewrite>
- * Fun fact: Impact doesn't work on the Crazy Games site, but Vape Rewrite does.
- * Oh, and by the way, it has a ClickGUI... An obnoxious one (will fix in 2038!), since it is always displayed.
- * Vape doesn't, and Impact vibe coded an easily detectable one.
- * I'm going to cut the yap and leave it here. - bab
+ * hey my deal douhs are bursting in peices - ninja
  */
