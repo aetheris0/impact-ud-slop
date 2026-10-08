@@ -4439,56 +4439,277 @@ const survival = new Module("SurvivalMode", function(callback) {
 		};
 
 		// Old vape Styles
-		const style = document.createElement("style");
+				const style = document.createElement("style");
 		style.textContent = `
-      @keyframes vapeEnter {0%{opacity:0;transform:translateY(-10px);}100%{opacity:1;transform:translateY(0);}}
-      @keyframes vapeExit {0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(-10px);}}
-      @keyframes glowPulse {0%{box-shadow:0 2px 8px rgba(15,179,160,0);}50%{box-shadow:0 4px 16px rgba(15,179,160,0.4);}100%{box-shadow:0 2px 8px rgba(15,179,160,0);}}
-      .vape-panel { position:absolute; background:linear-gradient(180deg, rgba(28,30,32,0.98), rgba(23,25,27,0.98)); border-radius:12px; border:1px solid rgba(255,255,255,0.06); box-shadow:0 12px 30px rgba(0,0,0,0.7); backdrop-filter:blur(8px); font-family:Inter,system-ui,sans-serif; color:#E6E9EA; animation:vapeEnter .2s ease-out; z-index:100000; overflow:hidden; min-width:260px; }
-      .vape-panel.closing { animation:vapeExit .2s ease-out; }
-      .vape-header { padding:12px 14px; background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.04); font-weight:700; font-size:13px; letter-spacing:0.5px; cursor:move; user-select:none; display:flex; align-items:center; justify-content:space-between; }
-      .vape-content { padding:8px; max-height:500px; overflow-y:auto; overflow-x:hidden; transition:max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease; }
-      .vape-content.collapsing { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
-      .vape-content::-webkit-scrollbar { width:6px; }
-      .vape-content::-webkit-scrollbar-thumb { background:var(--vape-accent, #0FB3A0); border-radius:10px; }
-      .vape-content::-webkit-scrollbar-track { background:transparent; }
-      .vape-cat-item { display:flex; align-items:center; gap:10px; padding:10px 12px; margin:4px 0; border-radius:8px; cursor:pointer; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); user-select:none; border:1px solid transparent; }
-      .vape-cat-item:hover { background:linear-gradient(90deg,var(--vape-accent-alpha, rgba(15,179,160,0.08)),transparent); box-shadow:0 4px 12px var(--vape-accent-shadow, rgba(15,179,160,0.15)); }
-      .vape-cat-item.active { background:linear-gradient(90deg,var(--vape-accent-alpha, rgba(15,179,160,0.12)),transparent); border:1px solid var(--vape-accent-alpha, rgba(15,179,160,0.12)); }
-      .vape-cat-icon { width:18px; height:18px; border-radius:4px; background:linear-gradient(135deg,var(--vape-accent, #0FB3A0),var(--vape-accent, #13a695)); box-shadow:0 2px 6px var(--vape-accent-shadow, rgba(15,179,160,0.2)); transition:all 0.3s ease; }
-      .vape-cat-item:hover .vape-cat-icon { box-shadow:0 4px 12px var(--vape-accent-shadow, rgba(15,179,160,0.4)); transform:scale(1.05); }
-      .vape-cat-text { font-weight:600; font-size:13px; }
-      .vape-module-row { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; margin:4px 0; border-radius:8px; background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent); border:1px solid rgba(255,255,255,0.03); cursor:pointer; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position:relative; }
-      .vape-module-row::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:0; height:2px; background:var(--vape-accent, #0FB3A0); transition:width 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius:2px; }
-      .vape-module-row:hover::after { width:90%; }
-      .vape-module-row:hover { background:linear-gradient(180deg,rgba(255,255,255,0.05),var(--vape-accent-alpha, rgba(15,179,160,0.03))); box-shadow:0 8px 24px var(--vape-accent-shadow, rgba(15,179,160,0.25)); transform:translateY(-2px); }
-      .vape-module-left { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
-      .vape-module-icon { width:32px; height:32px; border-radius:6px; background:linear-gradient(135deg,#2b2d30,#131415); display:flex; align-items:center; justify-content:center; color:#8F9498; font-weight:700; font-size:12px; flex-shrink:0; }
-      .vape-module-title { font-weight:600; font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-      .vape-module-right { display:flex; align-items:center; gap:8px; flex-shrink:0; }
-      .vape-toggle { width:42px; height:22px; border-radius:20px; background:rgba(255,255,255,0.05); position:relative; transition:all 0.18s; cursor:pointer; flex-shrink:0; }
-      .vape-toggle.on { background:var(--vape-accent, #0FB3A0); }
-      .vape-toggle-knob { position:absolute; left:3px; top:3px; width:16px; height:16px; border-radius:50%; background:#0d0f10; box-shadow:0 4px 10px rgba(0,0,0,0.6); transition:all 0.18s; }
-      .vape-toggle.on .vape-toggle-knob { left:23px; background:white; }
-      .vape-bind-display { font-size:11px; color:#8F9498; margin-right:8px; min-width:30px; text-align:right; flex-shrink:0; }
-      .vape-settings-row { margin:8px 0; }
-      .vape-settings-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:12px; }
-      .vape-settings-value { color:#8F9498; }
-      .vape-slider { width:100%; height:6px; border-radius:999px; background:rgba(255,255,255,0.08); outline:none; appearance:none; }
-      .vape-slider::-webkit-slider-thumb { appearance:none; width:16px; height:16px; border-radius:50%; background:var(--vape-accent, #0FB3A0); box-shadow:0 6px 12px rgba(0,0,0,0.4); cursor:pointer; }
-      .vape-bind-row { padding:8px 10px; margin:4px 0; background:rgba(0,0,0,0.2); border-radius:6px; font-size:12px; color:#8F9498; }
-      .vape-bind-change { color:#0FB3A0; cursor:pointer; margin-left:8px; }
-      .vape-bind-change:hover { text-decoration:underline; }
-      .vape-options { display:none; flex-direction:column; gap:4px; padding:8px 12px; background:rgba(0,0,0,0.3); border-top:1px solid rgba(255,255,255,0.05); animation:vapeEnter .2s ease-out; }
-      .vape-options.show { display:flex; }
-      .vape-options label { font-size:12px; display:flex; justify-content:space-between; color:white; }
-      .vape-options input[type="text"], .vape-options input[type="range"] { flex:1; margin-left:4px; }
-      .notif-wrap { position:fixed; bottom:40px; right:30px; display:flex; flex-direction:column; align-items:flex-end; pointer-events:none; z-index:999999; }
-      .notif { display:flex; align-items:center; gap:8px; background:rgba(20,20,20,0.85); color:white; padding:10px 14px; margin-top:8px; border-radius:10px; font-family:Inter,system-ui,sans-serif; font-size:13px; backdrop-filter:blur(6px); box-shadow:0 4px 12px rgba(0,0,0,0.4); opacity:1; transform:translateX(120%); transition:opacity .3s, transform .3s ease; border-left:4px solid; }
-      .notif.info { border-color:#3498db; }
-      .notif.success { border-color:#2ecc71; }
-      .notif.warn { border-color:#f1c40f; }
-      .notif.error { border-color:#e74c3c; }
+      :root {
+        --vape-pink: #ff6ec7;
+        --vape-purple: #a855f7;
+        --vape-deep: #4c1d95;
+        --vape-accent: #ff6ec7;
+        --vape-accent-2: #a855f7;
+        --vape-accent-alpha: rgba(255,110,199,0.14);
+        --vape-accent-shadow: rgba(168,85,247,0.35);
+        --vape-text: #f3e8ff;
+        --vape-muted: #b8a3d9;
+        --vape-glass: rgba(28, 12, 48, 0.72);
+        --vape-glass-2: rgba(40, 16, 70, 0.78);
+        --vape-border: rgba(255,110,199,0.22);
+      }
+
+      @keyframes vapeEnter {0%{opacity:0;transform:translateY(-10px) scale(.98);}100%{opacity:1;transform:translateY(0) scale(1);}}
+      @keyframes vapeExit {0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-10px) scale(.98);}}
+      @keyframes gradientShift {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+      @keyframes glowPulse {0%{box-shadow:0 0 0 0 rgba(255,110,199,0.35);}70%{box-shadow:0 0 0 10px rgba(255,110,199,0);}100%{box-shadow:0 0 0 0 rgba(255,110,199,0);}}
+
+      .vape-panel {
+        position: absolute;
+        background: linear-gradient(160deg, var(--vape-glass), var(--vape-glass-2));
+        border-radius: 16px;
+        border: 1px solid var(--vape-border);
+        box-shadow:
+          0 0 0 1px rgba(168,85,247,0.10),
+          0 18px 50px -18px rgba(168,85,247,0.65),
+          0 8px 24px rgba(0,0,0,0.55);
+        backdrop-filter: blur(16px) saturate(140%);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
+        font-family: 'Poppins', Inter, system-ui, sans-serif;
+        color: var(--vape-text);
+        animation: vapeEnter .22s cubic-bezier(.2,.9,.3,1.3);
+        z-index: 100000;
+        overflow: hidden;
+        min-width: 260px;
+      }
+      .vape-panel::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        padding: 1px;
+        background: linear-gradient(120deg, var(--vape-pink), var(--vape-purple), var(--vape-pink));
+        background-size: 300% 300%;
+        animation: gradientShift 8s ease infinite;
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+                mask-composite: exclude;
+        pointer-events: none;
+        opacity: .55;
+      }
+      .vape-panel.closing { animation: vapeExit .18s ease-out; }
+
+      .vape-header {
+        padding: 12px 14px;
+        background: linear-gradient(90deg, rgba(255,110,199,0.16), rgba(168,85,247,0.16));
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: .8px;
+        cursor: move;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-transform: uppercase;
+      }
+      .vape-header > span:first-child {
+        background: linear-gradient(90deg, var(--vape-pink), var(--vape-purple));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .vape-content {
+        padding: 8px;
+        max-height: 500px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transition: max-height .3s cubic-bezier(.4,0,.2,1), opacity .2s ease;
+      }
+      .vape-content.collapsing { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
+      .vape-content::-webkit-scrollbar { width: 6px; }
+      .vape-content::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--vape-pink), var(--vape-purple));
+        border-radius: 10px;
+      }
+      .vape-content::-webkit-scrollbar-track { background: transparent; }
+
+      .vape-cat-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        margin: 4px 0;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all .25s cubic-bezier(.4,0,.2,1);
+        user-select: none;
+        border: 1px solid transparent;
+      }
+      .vape-cat-item:hover {
+        background: linear-gradient(90deg, rgba(255,110,199,0.14), rgba(168,85,247,0.06));
+        border-color: rgba(255,110,199,0.20);
+        box-shadow: 0 6px 20px -8px rgba(255,110,199,0.55);
+        transform: translateX(2px);
+      }
+      .vape-cat-item.active {
+        background: linear-gradient(90deg, rgba(255,110,199,0.18), rgba(168,85,247,0.10));
+        border-color: rgba(255,110,199,0.35);
+      }
+
+      .vape-cat-icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 6px;
+        background: linear-gradient(135deg, var(--vape-pink), var(--vape-purple));
+        box-shadow: 0 2px 10px rgba(255,110,199,0.45);
+        transition: all .3s ease;
+      }
+      .vape-cat-item:hover .vape-cat-icon {
+        box-shadow: 0 4px 16px rgba(168,85,247,0.65);
+        transform: scale(1.08) rotate(-4deg);
+      }
+      .vape-cat-text { font-weight: 600; font-size: 13px; }
+
+      .vape-module-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        margin: 4px 0;
+        border-radius: 10px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.005));
+        border: 1px solid rgba(255,255,255,0.05);
+        cursor: pointer;
+        transition: all .25s cubic-bezier(.4,0,.2,1);
+        position: relative;
+        overflow: hidden;
+      }
+      .vape-module-row::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 0; height: 2px;
+        background: linear-gradient(90deg, var(--vape-pink), var(--vape-purple));
+        transition: width .3s cubic-bezier(.4,0,.2,1);
+        border-radius: 2px;
+      }
+      .vape-module-row:hover::after { width: 92%; }
+      .vape-module-row:hover {
+        background: linear-gradient(180deg, rgba(255,110,199,0.10), rgba(168,85,247,0.04));
+        border-color: rgba(255,110,199,0.25);
+        box-shadow: 0 10px 28px -12px rgba(168,85,247,0.75);
+        transform: translateY(-2px);
+      }
+
+      .vape-module-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+
+      .vape-module-icon {
+        width: 32px; height: 32px;
+        border-radius: 9px;
+        background: linear-gradient(135deg, rgba(255,110,199,0.25), rgba(168,85,247,0.25));
+        border: 1px solid rgba(255,255,255,0.08);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-weight: 700; font-size: 12px;
+        flex-shrink: 0;
+        text-shadow: 0 0 8px rgba(255,110,199,0.6);
+      }
+
+      .vape-module-title {
+        font-weight: 600; font-size: 13px;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      }
+      .vape-module-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+      .vape-toggle {
+        width: 42px; height: 22px; border-radius: 20px;
+        background: rgba(255,255,255,0.06);
+        position: relative; transition: all .2s;
+        cursor: pointer; flex-shrink: 0;
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+      .vape-toggle.on {
+        background: linear-gradient(90deg, var(--vape-pink), var(--vape-purple));
+        box-shadow: 0 0 14px rgba(255,110,199,0.55), inset 0 0 6px rgba(255,255,255,0.25);
+        border-color: transparent;
+      }
+      .vape-toggle-knob {
+        position: absolute; left: 3px; top: 3px;
+        width: 16px; height: 16px; border-radius: 50%;
+        background: #1a0b2e;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+        transition: all .2s cubic-bezier(.2,.9,.3,1.4);
+      }
+      .vape-toggle.on .vape-toggle-knob { left: 23px; background: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.8); }
+
+      .vape-bind-display { font-size: 11px; color: var(--vape-muted); margin-right: 8px; min-width: 30px; text-align: right; flex-shrink: 0; }
+      .vape-settings-row { margin: 8px 0; }
+      .vape-settings-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 12px; }
+      .vape-settings-value { color: var(--vape-muted); }
+
+      .vape-slider {
+        width: 100%; height: 6px; border-radius: 999px;
+        background: linear-gradient(90deg, rgba(255,110,199,0.25), rgba(168,85,247,0.25));
+        outline: none; appearance: none;
+        -webkit-appearance: none;
+      }
+      .vape-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 16px; height: 16px; border-radius: 50%;
+        background: linear-gradient(135deg, var(--vape-pink), var(--vape-purple));
+        box-shadow: 0 0 12px rgba(255,110,199,0.9), 0 4px 10px rgba(0,0,0,0.5);
+        cursor: pointer;
+        border: 2px solid rgba(255,255,255,0.85);
+      }
+      .vape-slider::-moz-range-thumb {
+        width: 16px; height: 16px; border-radius: 50%;
+        background: linear-gradient(135deg, var(--vape-pink), var(--vape-purple));
+        box-shadow: 0 0 12px rgba(255,110,199,0.9);
+        cursor: pointer; border: 2px solid #fff;
+      }
+
+      .vape-bind-row { padding: 8px 10px; margin: 4px 0; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 12px; color: var(--vape-muted); }
+      .vape-bind-change { color: var(--vape-pink); cursor: pointer; margin-left: 8px; }
+      .vape-bind-change:hover { text-decoration: underline; }
+
+      .vape-options {
+        display: none; flex-direction: column; gap: 4px;
+        padding: 10px 12px;
+        background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(40,16,70,0.35));
+        border-top: 1px solid rgba(255,110,199,0.18);
+        animation: vapeEnter .2s ease-out;
+      }
+      .vape-options.show { display: flex; }
+      .vape-options label { font-size: 12px; display: flex; justify-content: space-between; color: #fff; }
+      .vape-options input[type="text"], .vape-options input[type="range"] { flex: 1; margin-left: 4px; }
+
+      /* Global accent overrides so inline styles using --vape-accent pick up the gradient */
+      .vape-toggle.on, .vape-cat-icon, .vape-slider::-webkit-slider-thumb, .vape-slider::-moz-range-thumb {
+        background: linear-gradient(135deg, var(--vape-pink), var(--vape-purple)) !important;
+      }
+
+      /* Notifications */
+      .notif-wrap { position: fixed; bottom: 40px; right: 30px; display: flex; flex-direction: column; align-items: flex-end; pointer-events: none; z-index: 999999; }
+      .notif {
+        display: flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(40,16,70,0.92), rgba(28,12,48,0.92));
+        color: #fff; padding: 10px 14px; margin-top: 8px;
+        border-radius: 12px;
+        font-family: 'Poppins', Inter, system-ui, sans-serif;
+        font-size: 13px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px -10px rgba(168,85,247,0.8);
+        opacity: 1; transform: translateX(120%);
+        transition: opacity .3s, transform .3s ease;
+        border-left: 3px solid var(--vape-pink);
+      }
+      .notif.info    { border-image: linear-gradient(180deg, #ff6ec7, #a855f7) 1; border-left-color: #ff6ec7; }
+      .notif.success { border-left-color: #a855f7; }
+      .notif.warn    { border-left-color: #f1c40f; }
+      .notif.error   { border-left-color: #e74c3c; }
+
+      /* Pointer lock friendly cursor */
+      .vape-panel, .vape-panel * { cursor: default; }
+      .vape-module-row, .vape-cat-item, .vape-toggle { cursor: pointer; }
     `;
 		document.head.appendChild(style);
 
@@ -4534,14 +4755,15 @@ const survival = new Module("SurvivalMode", function(callback) {
 
 		// === Helper: Set Accent Color ===
 		function setAccentColor(color) {
-			document.documentElement.style.setProperty("--vape-accent", color);
-			const r = parseInt(color.slice(1, 3), 16);
-			const g = parseInt(color.slice(3, 5), 16);
-			const b = parseInt(color.slice(5, 7), 16);
-			document.documentElement.style.setProperty("--vape-accent-alpha", `rgba(${r},${g},${b},0.12)`);
-			document.documentElement.style.setProperty("--vape-accent-shadow", `rgba(${r},${g},${b},0.2)`);
-			localStorage.setItem("vape-accent-color", color);
-		}
+  // We now drive everything from CSS vars; map any single color to a pink/purple pair.
+  const pink = color || "#ff6ec7";
+  const purple = "#a855f7";
+  document.documentElement.style.setProperty("--vape-pink", pink);
+  document.documentElement.style.setProperty("--vape-purple", purple);
+  document.documentElement.style.setProperty("--vape-accent", pink);
+  document.documentElement.style.setProperty("--vape-accent-2", purple);
+  localStorage.setItem("vape-accent-color", pink);
+}
 
 		const savedColor = localStorage.getItem("vape-accent-color");
 		if (savedColor) {
