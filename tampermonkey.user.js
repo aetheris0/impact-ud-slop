@@ -13,10 +13,9 @@
 // @grant        GM_setValue
 // @grant        unsafeWindow
 // @require      https://raw.githubusercontent.com/aetheris0/impact-ud-slop/refs/heads/main/vav4inject.js
-// @require      https://raw.githubusercontent.com/aetheris0/impact-ud-slop//refs/heads/main/unlocker.js
 // @run-at       document-start
-// @updateURL    https://raw.githubusercontent.com/aetheris0/impact-ud-slop//main/tampermonkey.user.js
-// @downloadURL  https://raw.githubusercontent.com/aetheris0/impact-ud-slop//main/tampermonkey.user.js
+// @updateURL    https://raw.githubusercontent.com/aetheris0/impact-ud-slop/main/tampermonkey.user.js
+// @downloadURL  https://raw.githubusercontent.com/aetheris0/impact-ud-slop/main/tampermonkey.user.js
 // @license      AGPL-3.0-only
 // ==/UserScript==
 
